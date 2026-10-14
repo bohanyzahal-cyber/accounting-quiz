@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>דף עזר — חשבונאות פיננסית</title>
+<style>
+/* דף אחד, צד אחד, A4. הדפסה: Ctrl+P → שוליים "ללא", גודל 100%, להפעיל "גרפיקת רקע". */
+:root{
+  --ink:#111; --mut:#444; --line:#b9b9b9; --paper:#fff;
+  --c1:#7a2e8e; --c2:#1d5fa8; --c3:#0f766e; --c4:#2b6b2b; --c5:#9a4a06; --c6:#a3122b; --c7:#5b4a1a; --c8:#24435f;
+  --soft1:#f4ecf7; --soft2:#e9f1fb; --soft3:#e4f3f1; --soft4:#eaf4e6; --soft5:#fbefe2; --soft6:#fbe9ec; --soft7:#f5f0e1; --soft8:#e8eef4;
+  --warn:#b42318;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:#d9d9d6}
+body{font-family:Arial,"Segoe UI",sans-serif;color:var(--ink);font-size:7.2pt;line-height:1.18;
+  -webkit-print-color-adjust:exact;print-color-adjust:exact;}
+.sheet{width:210mm;height:297mm;margin:10mm auto;background:var(--paper);padding:4.2mm 4.6mm 3.6mm;
+  box-shadow:0 2px 12px rgba(0,0,0,.25);overflow:hidden;display:flex;flex-direction:column;gap:1.4mm}
+@media print{
+  @page{size:A4;margin:0}
+  html,body{background:#fff}
+  .sheet{margin:0;box-shadow:none}
+  .noprint{display:none!important}
+}
+.top{display:flex;align-items:baseline;gap:3mm;border-bottom:1.6px solid var(--ink);padding-bottom:.8mm}
+.top h1{font-size:11.5pt;letter-spacing:-.2px}
+.top .leg{font-size:6.4pt;color:var(--mut)}
+.top .leg b{color:var(--warn)}
+.top .sp{flex:1}
+.grid{flex:1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.6mm;min-height:0}
+.col{display:flex;flex-direction:column;gap:1.4mm;min-height:0}
+.box{flex-shrink:0;border:1px solid var(--line);border-radius:1.4mm;overflow:hidden;background:#fff}
+.box>h2{font-size:7.6pt;color:#fff;padding:.55mm 1.6mm .45mm;display:flex;align-items:center;gap:1.2mm;letter-spacing:-.1px}
+.box>h2 .n{display:inline-flex;align-items:center;justify-content:center;width:3.6mm;height:3.6mm;border-radius:50%;
+  background:#fff;font-size:6.6pt;font-weight:800;flex:none}
+.box>h2 small{font-weight:400;font-size:6.2pt;opacity:.92;margin-right:auto}
+.bd{padding:.9mm 1.4mm 1mm}
+.bd p,.bd li{margin-bottom:.45mm}
+.bd ul{list-style:none}
+.bd li{padding-right:2.1mm;position:relative}
+.bd li::before{content:"";position:absolute;right:.3mm;top:1.15mm;width:.95mm;height:.95mm;border-radius:50%;background:currentColor;opacity:.55}
+b{font-weight:700}
+.w{color:var(--warn);font-weight:700}
+.f{border-radius:1mm;padding:.7mm 1.2mm;margin:.4mm 0 .8mm;font-weight:700;font-size:7pt;text-align:center;line-height:1.25}
+.f small{display:block;font-weight:400;font-size:6.3pt}
+.mini{font-size:6.15pt;color:var(--mut)}
+table{border-collapse:collapse;width:100%}
+td,th{border-bottom:1px solid #ddd;padding:.28mm .6mm;vertical-align:top;text-align:right}
+th{font-size:6.3pt;font-weight:700;background:#f3f3f1}
+tr:last-child td{border-bottom:none}
+.kw td:first-child{width:60%}
+.kw td:last-child{font-weight:700}
+.eff td,.eff th{text-align:center;padding:.22mm .3mm}
+.eff td:first-child,.eff th:first-child{text-align:right}
+.up{color:#0b6b22;font-weight:800}
+.dn{color:#b42318;font-weight:800}
+.z{color:#999}
+.cas div{display:flex;gap:1mm;padding:.1mm 0}
+.cas .r{font-weight:700;border-top:1px solid var(--ink);margin-top:.2mm}
+.cas .op{width:3mm;flex:none;text-align:center;font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:.6mm 1.6mm}
+.two .t{font-weight:700;border-bottom:1px solid #ccc;margin-bottom:.3mm}
+.trend td,.trend th{text-align:center}
+.trend td:first-child{text-align:right;font-weight:700}
+bdi.m{direction:ltr;unicode-bidi:isolate;white-space:nowrap}
+.ex{background:#f6f6f4;border-radius:1mm;padding:.6mm 1.1mm;margin-top:.6mm;font-size:6.2pt}
+/* צבע לכל פרק */
+.k1>h2{background:var(--c1)} .k1 .n{color:var(--c1)} .k1 .f{background:var(--soft1)}
+.k2>h2{background:var(--c2)} .k2 .n{color:var(--c2)} .k2 .f{background:var(--soft2)}
+.k3>h2{background:var(--c3)} .k3 .n{color:var(--c3)} .k3 .f{background:var(--soft3)}
+.k4>h2{background:var(--c4)} .k4 .n{color:var(--c4)} .k4 .f{background:var(--soft4)}
+.k5>h2{background:var(--c5)} .k5 .n{color:var(--c5)} .k5 .f{background:var(--soft5)}
+.k6>h2{background:var(--c6)} .k6 .n{color:var(--c6)} .k6 .f{background:var(--soft6)}
+.k7>h2{background:var(--c7)} .k7 .n{color:var(--c7)} .k7 .f{background:var(--soft7)}
+.k8>h2{background:var(--c8)} .k8 .n{color:var(--c8)} .k8 .f{background:var(--soft8)}
+.k1 .kw tr:nth-child(odd) td{background:var(--soft1)}
+.bar{max-width:210mm;margin:10mm auto -6mm;font:13px Arial,sans-serif;display:flex;gap:10px;align-items:center;color:#222}
+.bar button{font:inherit;padding:6px 14px;border-radius:8px;border:1px solid #888;background:#fff;cursor:pointer}
+</style>
+</head>
+<body>
+<div class="bar noprint">
+  <button onclick="window.print()">🖨 הדפסה</button>
+  <span>בחלון ההדפסה: שוליים «ללא», קנה מידה 100%, ולסמן «גרפיקת רקע». יוצא עמוד אחד בצד אחד.</span>
+</div>
+
+<div class="sheet">
+<div class="top">
+  <h1>חשבונאות פיננסית · דף עזר</h1>
+  <span class="leg"><b>⚠</b> = מלכודת נפוצה · ↑ עולה ↓ יורד — אין השפעה · י.פ/י.ס = יתרת פתיחה/סגירה · ע"מ = עלות המכר · ר"ק = רכוש קבוע</span>
+  <span class="sp"></span>
+</div>
+
+<div class="grid">
+
+<!-- ========== עמודה ימנית: עקרונות ודוחות ========== -->
+<div class="col">
+
+<div class="box k1">
+  <h2><span class="n">1</span>מה העיקרון? מילת מפתח ← תשובה</h2>
+  <div class="bd" style="padding:.4mm .6mm .5mm">
+  <table class="kw">
+    <tr><td>מחשבון כיס, פח, כלי קטן — נרשם מיד כהוצאה</td><td>מהותיות</td></tr>
+    <tr><td>מלאי לפי הנמוך מעלות ושווי מימוש · הפסד צפוי נרשם מיד, רווח רק במימוש</td><td>שמרנות (זהירות)</td></tr>
+    <tr><td>שכר דצמבר שישולם בינואר נרשם בדצמבר · פחת על פני חיי הנכס</td><td>הקבלת הכנסות להוצאות</td></tr>
+    <tr><td>הכנסה כשהסחורה סופקה / השירות ניתן — גם בלי תקבול</td><td>הכרה בהכנסה</td></tr>
+    <tr><td>חכירה לכל חיי הנכס = רכישה באשראי · מכירה וחכירה חוזרת</td><td>תוכן על פני צורה</td></tr>
+    <tr><td>הנכס נשאר בעלות גם כשמחיר השוק עלה</td><td>עלות היסטורית (אובייקטיביות)</td></tr>
+    <tr><td>הוצאה פרטית של הבעלים לא נכנסת לדוחות העסק</td><td>ישות כלכלית נפרדת</td></tr>
+    <tr><td>מוניטין עצמי, שביעות רצון עובדים — לא נרשמים</td><td>יחידה מוניטרית</td></tr>
+    <tr><td>דוח שנתי / רבעוני בפרקי זמן קבועים</td><td>תקופה חשבונאית</td></tr>
+    <tr><td>נכסים לפי עלות ולא לפי ערך פירוק</td><td>עסק חי</td></tr>
+    <tr><td>פירוט בביאורים, אירוע מהותי שחייבים לספר עליו</td><td>גילוי נאות</td></tr>
+    <tr><td>אותה שיטה כל שנה (פחת, FIFO)</td><td>עקביות / השוואתיות</td></tr>
+    <tr><td>מועד פרסום הדוחות (90 יום שנתי, 45 רבעוני)</td><td>רלוונטיות (זמינות במועד)</td></tr>
+    <tr><td>תחזית אופטימית של מנהל, ניגוד עניינים</td><td>ניטרליות ← מהימנות</td></tr>
+    <tr><td>נדל"ן: שווי שוק רלוונטי, עלות מהימנה</td><td>התנגשות רלוונטיות↔מהימנות</td></tr>
+    <tr><td>מפרסמים מידע רק אם התועלת גדולה מהעלות</td><td>עלות מול תועלת</td></tr>
+  </table>
+  </div>
+</div>
+
+<div class="box k2">
+  <h2><span class="n">2</span>יסודות ומושגים</h2>
+  <div class="bd"><ul>
+    <li><b>חשבונאות</b> = שפה עסקית מקובלת ← דוחות כספיים ← קבלת החלטות.</li>
+    <li><b>4 הנחות יסוד:</b> ישות כלכלית נפרדת · יחידה מוניטרית (רק מה שנמדד בכסף, מטבע אחד) · תקופה חשבונאית · עסק חי.</li>
+    <li><b>מאפיינים איכותיים:</b> <b>רלוונטיות</b> (זמינות במועד, ערך ניבוי, משוב/היזון חוזר) · <b>מהימנות</b> (ניטרליות, שמרנות, תוכן על פני צורה, שלמות) · <b>השוואתיות ועקביות</b> · <b>מובנות</b>.</li>
+    <li><b>עקרונות:</b> עלות היסטורית · הקבלה · הכרה בהכנסה · גילוי נאות. חלופות לעלות: שווי הוגן (ערך מימוש), עלות שוטפת (שחלוף), ערך נוכחי.</li>
+    <li><b>אילוצים:</b> מהותיות · שמרנות · עלות מול תועלת · ייחודיות ענפית (בנקים) · התנגשות בין מאפיינים.</li>
+    <li><b>חקיקה:</b> חוק החברות, חוק ני"ע, פקודת מס הכנסה, חוק רו"ח · <b>אכיפה:</b> רשם החברות, רשות ני"ע, רשות המסים, מועצת רו"ח · <b>גופים מקצועיים:</b> המוסד הישראלי לתקינה בחשבונאות (מאמץ IFRS), לשכת רו"ח · <b>תקינה:</b> תקנים, IFRS, גילויי דעת.</li>
+    <li><b>רו"ח מבקר:</b> חיצוני ובלתי תלוי, "כלב שמירה" (<span class="w">לא</span> בעל מניות מהותי). <b>מטרת חוות הדעת: להביע דעה</b> אם הדוחות משקפים באופן נאות. האחריות לדוחות — <b>ההנהלה</b>; לחוות הדעת — רו"ח. דוח לא מבוקר = פחות מהימן.</li>
+    <li><b>משתמשים:</b> בעלי מניות (תשואה) · מנהלים (תגמול) · בנקים (פירעון, בטחונות) · ספקים (אשראי) · לקוחות (חוסן) · מתחרים (בנצ'מרק) · רשויות (מסים).</li>
+  </ul></div>
+</div>
+
+<div class="box k3">
+  <h2><span class="n">3</span>הדוחות הכספיים</h2>
+  <div class="bd" style="padding:.4mm .6mm .8mm">
+  <table>
+    <tr><th style="width:27%">דוח</th><th>מה מציג</th></tr>
+    <tr><td><b>מאזן</b><br><span class="mini">דוח על המצב הכספי ·</span> <span class="mini">צילום ליום מסוים</span></td><td>נכסים, התחייבויות, הון ← שווי, חוסן פיננסי, נזילות</td></tr>
+    <tr><td><b>רווח והפסד</b> (רווח כולל)<br><span class="mini">סרט: תקופה</span></td><td>הכנסות − הוצאות = רווח ← רווחיות. הדוח החשוב ביותר</td></tr>
+    <tr><td><b>שינויים בהון</b><br><span class="mini">תקופה</span></td><td>תנועות בהון מניות, פרמיה, עודפים</td></tr>
+    <tr><td><b>תזרים מזומנים</b><br><span class="mini">תקופה</span></td><td><b>שוטפת</b> (לקוחות, ספקים, שכר, מסים) · <b>השקעה</b> (קנייה/מכירה של ר"ק) · <b>מימון</b> (הלוואות, מניות, דיבידנד). אין כללי מדידה, אין שלילי — כמו כספת</td></tr>
+    <tr><td><b>ביאורים</b></td><td>חלק בלתי נפרד: מידע טקסטואלי ופירוט של הסעיפים, מדיניות חשבונאית</td></tr>
+  </table>
+  <ul style="margin-top:.6mm;padding:0 .8mm">
+    <li>רווח נקי ← עודפים ← הון במאזן · מזומן בסוף התזרים = מזומן במאזן.</li>
+    <li><b>מספרי השוואה</b> = עמודת השנה הקודמת (מאזן 31.12.26 ← השוואה 31.12.25).</li>
+    <li>תהליך: עסקה ← פקודת יומן ← ספר ראשי ← מאזן בוחן ← דוחות.</li>
+  </ul>
+  </div>
+</div>
+
+</div>
+
+<!-- ========== עמודה אמצעית: מאזן, רווח והפסד, השפעת עסקאות ========== -->
+<div class="col">
+
+<div class="box k4">
+  <h2><span class="n">4</span>מאזן</h2>
+  <div class="bd">
+    <div class="f">נכסים = התחייבויות + הון עצמי<small>Δנכסים = Δהתחייבויות + Δהון · הון = נכסים − התחייבויות (ערך שיורי)</small></div>
+    <p>נכסים לפי <b>נזילות</b> (מזומן ראשון) · התחייבויות לפי <b>מועד פירעון</b> · שוטף = עד שנה.</p>
+    <div class="two">
+      <div><div class="t">נכסים שוטפים</div>מזומן ועו"ש · השקעות ופיקדונות לז"ק · לקוחות (בניכוי הפרשה לחומ"ס) · חייבים · מלאי</div>
+      <div><div class="t">התחייבויות שוטפות</div>משיכת יתר · אשראי לז"ק · ספקים · זכאים (מס, שכר) · מקדמות מלקוחות · חלויות שוטפות של הלוואה לז"א</div>
+      <div><div class="t">נכסים לא שוטפים</div>השקעות לז"א (מניות, פיקדון, הלוואה שניתנה) · ר"ק (עלות − פחת נצבר) · נדל"ן להשקעה · רכוש אחר: פטנט, זיכיון, מוניטין שנרכש</div>
+      <div><div class="t">לא שוטפות + הון</div>הלוואות לז"א · אג"ח · פיצויי פרישה<br><b>הון:</b> הון מניות · פרמיה · עודפים</div>
+    </div>
+    <div class="f" style="margin-top:.8mm">עודפים י.ס = עודפים י.פ + רווח נקי − דיבידנד</div>
+    <ul>
+      <li><span class="w">⚠</span> פחת נצבר והפרשה לחומ"ס = נכס שלילי, מוצגים בניכוי.</li>
+      <li><span class="w">⚠</span> הכוונה קובעת: מניה למימוש השנה ← שוטף; להחזקה לטווח ארוך ← לא שוטף.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="box k5">
+  <h2><span class="n">5</span>רווח והפסד — מדרגות</h2>
+  <div class="bd cas">
+    <div><span class="op"></span>מכירות (בניכוי הנחות והחזרות)</div>
+    <div><span class="op">−</span>עלות המכר</div>
+    <div class="r"><span class="op">=</span>רווח גולמי <span class="mini">&nbsp;(שיעור ר"ג = ר"ג ÷ מכירות)</span></div>
+    <div><span class="op">−</span><span><b>מכירה ושיווק:</b> פרסום, עמלות, שכר מוכרים, הובלה ללקוח</span></div>
+    <div><span class="op">−</span><span><b>הנהלה וכלליות:</b> שכר הנהלה, שכ"ד, משרד, תקשורת, פחת, משפטיות, חומ"ס</span></div>
+    <div><span class="op">±</span><span><b>אחרות</b> (חד־פעמי): רווח/הפסד הון ממכירת ר"ק, תביעה, שכ"ד כשאינה חברת נדל"ן</span></div>
+    <div class="r"><span class="op">=</span>רווח תפעולי</div>
+    <div><span class="op">±</span><span><b>מימון:</b> ריבית, הפרשי שער, עמלות</span></div>
+    <div class="r"><span class="op">=</span>רווח לפני מס <span>&nbsp;− מס</span></div>
+    <div class="r"><span class="op">=</span>רווח נקי ← עודפים</div>
+    <p class="mini" style="margin-top:.4mm">רווח כולל אחר (ישר להון): שערוך ר"ק, הפרשי תרגום.</p>
+  </div>
+</div>
+
+<div class="box k6">
+  <h2><span class="n">6</span>השפעת עסקה</h2>
+  <div class="bd" style="padding:.3mm .5mm .6mm">
+  <table class="eff">
+    <tr><th>עסקה</th><th>נכסים</th><th>התח'</th><th>הון</th><th>רווח</th><th>מזומן</th></tr>
+    <tr><td>הנפקת מניות</td><td class="up">↑</td><td class="z">—</td><td class="up">↑</td><td class="z">—</td><td class="up">↑</td></tr>
+    <tr><td>קבלת הלוואה</td><td class="up">↑</td><td class="up">↑</td><td class="z">—</td><td class="z">—</td><td class="up">↑</td></tr>
+    <tr><td>מלאי במזומן</td><td>↑↓</td><td class="z">—</td><td class="z">—</td><td class="z">—</td><td class="dn">↓</td></tr>
+    <tr><td>מלאי / ר"ק באשראי</td><td class="up">↑</td><td class="up">↑</td><td class="z">—</td><td class="z">—</td><td class="z">—</td></tr>
+    <tr><td>מכירה באשראי</td><td class="up">↑</td><td class="z">—</td><td class="up">↑</td><td class="up">↑</td><td class="z">—</td></tr>
+    <tr><td>גבייה מלקוח</td><td>↑↓</td><td class="z">—</td><td class="z">—</td><td class="z">—</td><td class="up">↑</td></tr>
+    <tr><td><span class="w">⚠</span> מקדמה מלקוח</td><td class="up">↑</td><td class="up">↑</td><td class="z">—</td><td class="z"><b>—</b></td><td class="up">↑</td></tr>
+    <tr><td>תשלום לספק</td><td class="dn">↓</td><td class="dn">↓</td><td class="z">—</td><td class="z">—</td><td class="dn">↓</td></tr>
+    <tr><td>שכר ששולם</td><td class="dn">↓</td><td class="z">—</td><td class="dn">↓</td><td class="dn">↓</td><td class="dn">↓</td></tr>
+    <tr><td>שכר שנצבר, טרם שולם</td><td class="z">—</td><td class="up">↑</td><td class="dn">↓</td><td class="dn">↓</td><td class="z">—</td></tr>
+    <tr><td>פחת / ירידת ערך מלאי</td><td class="dn">↓</td><td class="z">—</td><td class="dn">↓</td><td class="dn">↓</td><td class="z">—</td></tr>
+    <tr><td><span class="w">⚠</span> דיבידנד</td><td class="dn">↓</td><td class="z">—</td><td class="dn">↓</td><td class="z"><b>—</b></td><td class="dn">↓</td></tr>
+  </table>
+  <p style="margin:.6mm .8mm 0"><span class="w">⚠</span> רווח ≠ מזומן: מכירה באשראי מגדילה רווח בלי מזומן; קניית קרקע מקטינה מזומן בלי הוצאה. חברה רווחית יכולה לקרוס מחוסר נזילות.</p>
+  </div>
+</div>
+
+<div class="box k3">
+  <h2><span class="n">9</span>חישובים פתורים — תבניות</h2>
+  <div class="bd"><ul>
+    <li><b>משוואה:</b> הנכסים גדלו ב־120,000 וההתחייבויות ב־50,000 ⇐ ההון גדל ב־<b>70,000</b>.</li>
+    <li><b>פחת חלק שנה:</b> 100,000, 5 שנים, הופעלה 1.4: שנה 1 = <bdi class="m">20,000 × 9/12 = 15,000</bdi>; פחת נצבר אחרי שנה 2 = 35,000; ערך בספרים 65,000.</li>
+    <li><b>ספרות, חלק שנה:</b> 40,000, שייר 4,000, 4 שנים, מ־30.6: שנה 1 = <bdi class="m">36,000 × 4/10 × 6/12 = 7,200</bdi>; שנה 2 = <bdi class="m">36,000 × (4/10 + 3/10) × 6/12 = 12,600</bdi>.</li>
+    <li><b>שינוי אומדן:</b> 100,000, שייר 10,000, 5 שנים: אחרי שנתיים של 18,000 ⇐ ערך בספרים 64,000. מעכשיו 4 שנים בלי שייר ⇐ <bdi class="m">64,000 ÷ 4 = 16,000</bdi> לשנה.</li>
+    <li><b>מכירה:</b> <bdi class="m">100,000 − 56,000 = 44,000</bdi> בספרים; תמורה 50,000 ⇐ <b>רווח הון 6,000</b> (הכנסות אחרות).</li>
+    <li><b>שווי מימוש:</b> עלות 100,000, שווי מימוש 85,000 ⇐ מלאי 85,000 + הפסד 15,000. אם השווי 180,000 ⇐ נשאר 100,000.</li>
+    <li><b>% ר"ג (שריפה):</b> מכירות 21,935, ר"ג 22.5% ⇐ <bdi class="m">21,935 × 0.775 = 17,000</bdi> ע"מ ⇐ י.ס = <bdi class="m">13,000 + 19,000 − 17,000 = 15,000</bdi>.</li>
+  </ul></div>
+</div>
+
+</div>
+
+<!-- ========== עמודה שמאלית: מלאי ורכוש קבוע ========== -->
+<div class="col">
+
+<div class="box k7">
+  <h2><span class="n">7</span>מלאי ועלות המכר <small>IAS 2</small></h2>
+  <div class="bd">
+    <div class="f">י.פ + קניות = י.ס + ע"מ<small>מקורות = שימושים ← ע"מ = י.פ + קניות − י.ס</small></div>
+    <ul>
+      <li>קניות − ע"מ = י.ס − י.פ ← הקניות גבוהות מע"מ ⇒ המלאי <b>עלה</b> באותו סכום (נמוכות ⇒ ירד). <span class="w">⚠</span> בלי י.פ או י.ס אי אפשר לחשב ע"מ: חסר נתון.</li>
+      <li>י.ס מופיע פעמיים: נכס שוטף במאזן + מופחת בע"מ. <span class="w">⚠</span> י.ס מנופח ⇒ ע"מ נמוך ⇒ רווח גבוה.</li>
+      <li><b>עלות המלאי:</b> מחיר − הנחות + מכס ומסי יבוא + הובלה וביטוח <b>עד המחסן</b> + פריקה. <span class="w">⚠</span> לא: הובלה ללקוח (מכירה). אשראי ספקים חריג ← מחיר מזומן, ההפרש = מימון.</li>
+      <li><b>תעשייתית:</b> חו"ג · אריזה · בעיבוד · גמורה. עלות = חו"ג + עבודה ישירה + חרושת (אנרגיה, אחזקה, שכירות מפעל) + פחת מכונות ייצור.
+        <div class="ex">חו"ג שנצרכו = י.פ חו"ג + קניות − י.ס חו"ג<br>עלויות ייצור = חו"ג שנצרכו + עבודה + חרושת + פחת<br>עלות מה שהושלם = עלויות ייצור + י.פ בעיבוד − י.ס בעיבוד<br>ע"מ = י.פ גמורה + עלות מה שהושלם − י.ס גמורה</div></li>
+      <li><b>ניהול:</b> תקופתי = ספירה בסוף התקופה · תמידי = כרטסת שוטפת.</li>
+      <li><b>זיהוי ספציפי:</b> פריטים יקרים וייחודיים (פסנתר, רכב, יהלום).</li>
+      <li><b>FIFO:</b> נמכר הישן ← י.ס = הקניות <b>האחרונות</b>. תקופתי = תמידי תמיד.</li>
+      <li><b>ממוצע משוקלל</b> (תקופתי): (עלות י.פ + קניות) ÷ (יח' י.פ + יח' שנקנו) · <b>ממוצע נע</b> (תמידי): ממוצע חדש אחרי כל קנייה · <b>LIFO</b> <span class="w">אסור</span> (IFRS).</li>
+    </ul>
+    <table class="trend" style="margin:.5mm 0">
+      <tr><th>FIFO לעומת ממוצע</th><th>מחירים עולים ↑</th><th>מחירים יורדים ↓</th></tr>
+      <tr><td>מלאי סגירה</td><td>גבוה</td><td>נמוך</td></tr>
+      <tr><td>עלות המכר</td><td>נמוכה</td><td>גבוהה</td></tr>
+      <tr><td>רווח גולמי</td><td>גבוה</td><td>נמוך</td></tr>
+    </table>
+    <ul>
+      <li><b>הנמוך מעלות ושווי מימוש נטו</b> (שמרנות). שווי מימוש נטו = מחיר מכירה צפוי − עלויות השלמה ומכירה. נמוך מהעלות ⇒ מלאי לפי שווי המימוש + הפסד מירידת ערך ברו"ה. גבוה ⇒ נשאר בעלות. <span class="w">⚠</span> חו"ג לא מפחיתים אם המוצר יימכר בעלות או יותר.</li>
+      <li>ירידת ערך: פגמים, נזק, התיישנות, שינוי טעמים, מחירי מכירה יורדים.</li>
+      <li><b>תמיד לפי שווי שוק:</b> חקלאות, עצים, יהלומים, משאבי טבע.</li>
+      <li><b>% רווח גולמי</b> (שריפה, קמעונאות): ע"מ = מכירות × (1 − % ר"ג) ⇒ י.ס = י.פ + קניות − ע"מ. גם: מחירי תקן.</li>
+      <li>שינוי שיטת מלאי ⇒ מתקנים למפרע (מספרי השוואה).</li>
+    </ul>
+    <div class="ex"><b>דוגמה:</b> קניות <bdi class="m">250,000 × 6</bdi> ו־<bdi class="m">200,000 × 5.5</bdi>; נמכרו 350,000 יח' ב־10.<br>FIFO: ע"מ <bdi class="m">250,000×6 + 100,000×5.5 = 2,050,000</bdi> · י.ס 550,000 · ר"ג 1,450,000<br>ממוצע: <bdi class="m">2,600,000 ÷ 450,000 = 5.78</bdi> ⇐ ע"מ 2,022,222 · י.ס 577,778</div>
+  </div>
+</div>
+
+<div class="box k8">
+  <h2><span class="n">8</span>רכוש קבוע ופחת <small>IAS 16</small></h2>
+  <div class="bd">
+    <ul>
+      <li>מוחשי, לשימוש (ייצור, אספקה, השכרה, מנהלה) יותר מתקופה אחת, לא למכירה. <span class="w">⚠</span> לא ר"ק: נדל"ן להשקעה, בלתי מוחשי, רכב למכירה אצל סוחר (מלאי).</li>
+      <li><b>עלות</b> = מחיר + הובלה + התקנה והרכבה + הרצה ובדיקות + הכנת אתר + יועצים + מסים. קרקע: + תיווך, משפטיות, הריסת מבנה ישן. <span class="w">⚠</span> לא: ביטוח, חלקי חילוף, חומרי עזר, אחזקה.</li>
+      <li><b>מהוון:</b> השבחה, הארכת חיים, שיפור תפוקה, החלפת חלק מהותי (מנוע). <b>הוצאה:</b> תיקון ואחזקה שוטפים.</li>
+      <li>תמורת מניות ← שווי המניות או הנכס, הקל למדידה · חבילת נכסים ← לפי שווי יחסי.</li>
+      <li><b>החלפת נכסים:</b> יש מהות מסחרית ⇒ בשווי ההוגן של מה שנמסר + רווח/הפסד. אין ⇒ ערך בספרים, בלי רווח.</li>
+      <li><b>פחת</b> = הקצאת עלות, לא הערכת שווי. מתחיל <b>מיום ההפעלה</b>. בסיס = עלות − שייר. <span class="w">⚠</span> קרקע לא מופחתת. הוצאת פחת = השנה בלבד · פחת נצבר = מצטבר, במאזן.</li>
+    </ul>
+    <div class="f" style="text-align:right;font-size:6.9pt">
+      קו ישר: (עלות − שייר) ÷ שנות חיים × חודשי פעילות ÷ 12 &nbsp;·&nbsp; או: עלות × % × חודשים ÷ 12<br>
+      סכום ספרות: <bdi class="m">S = n(n+1)/2</bdi> (4 שנים: 10 · 5 שנים: 15) · שנה k: (עלות − שייר) × <bdi class="m">(n−k+1)/S</bdi><br>
+      יתרה פוחתת: % = 1 − ⁿ√(שייר÷עלות) · פחת = % × היתרה בתחילת השנה<br>
+      תפוקה: (עלות − שייר) × יחידות השנה ÷ סה"כ יחידות צפויות
+    </div>
+    <div class="ex" style="margin-top:0">100,000, שייר 10,000, 5 שנים: קו ישר <bdi class="m">90,000 ÷ 5 = 18,000</bdi> כל שנה · ספרות: <bdi class="m">90,000 × 5/15 = 30,000</bdi>, אחר כך 24,000 / 18,000 / 12,000 / 6,000</div>
+    <ul style="margin-top:.5mm">
+      <li><b>שינוי אומדן</b> (חיים, שייר) או שיטת פחת ⇒ <b>מכאן ולהבא</b>: (ערך בספרים − שייר חדש) ÷ יתרת החיים. <span class="w">⚠</span> לא מתקנים שנים קודמות.</li>
+      <li><b>מכירה:</b> רווח/הפסד הון = תמורה − ערך בספרים (אחרי פחת עד יום המכירה) ⇒ הכנסות/הוצאות אחרות.</li>
+      <li><b>הערכה מחדש</b> (חלופה): עליית ערך ⇒ ישר להון (קרן הערכה מחדש), לא לרווח.</li>
+    </ul>
+  </div>
+</div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
